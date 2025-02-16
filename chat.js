@@ -143,63 +143,38 @@
         }
 
         .n8n-chat-widget .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            background: var(--chat--color-background);
-            display: flex;
-            flex-direction: column;
+          color: #007bff; /* Color del enlace */
+    text-decoration: underline;
         }
 
         .n8n-chat-widget .chat-message {
-            padding: 12px 16px;
-            margin: 8px 0;
-            border-radius: 12px;
-            max-width: 80%;
-            word-wrap: break-word;
-            font-size: 14px;
-            line-height: 1.5;
+        color: #007bff; /* Color del enlace */
+    text-decoration: underline;
         }
 
         .n8n-chat-widget .chat-message.user {
-            background: linear-gradient(135deg, var(--chat--color-primary) 0%, var(--chat--color-secondary) 100%);
-            color: white;
-            align-self: flex-end;
-            box-shadow: 0 4px 12px rgba(133, 79, 255, 0.2);
-            border: none;
+           color: #007bff; /* Color del enlace */
+    text-decoration: underline;
         }
 
         .n8n-chat-widget .chat-message.bot {
-            background: var(--chat--color-background);
-            border: 1px solid rgba(133, 79, 255, 0.2);
-            color: var(--chat--color-font);
-            align-self: flex-start;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+     color: #007bff; /* Color del enlace */
+    text-decoration: underline;
         }
 
         .n8n-chat-widget .chat-input {
-            padding: 16px;
-            background: var(--chat--color-background);
-            border-top: 1px solid rgba(133, 79, 255, 0.1);
-            display: flex;
-            gap: 8px;
+         color: #007bff; /* Color del enlace */
+    text-decoration: underline;
         }
 
         .n8n-chat-widget .chat-input textarea {
-            flex: 1;
-            padding: 12px;
-            border: 1px solid rgba(133, 79, 255, 0.2);
-            border-radius: 8px;
-            background: var(--chat--color-background);
-            color: var(--chat--color-font);
-            resize: none;
-            font-family: inherit;
-            font-size: 14px;
+           color: #007bff; /* Color del enlace */
+    text-decoration: underline;
         }
 
         .n8n-chat-widget .chat-input textarea::placeholder {
-            color: var(--chat--color-font);
-            opacity: 0.6;
+            color: #007bff; /* Color del enlace */
+    text-decoration: underline;
         }
 
         .n8n-chat-widget .chat-input button {
