@@ -386,8 +386,8 @@
     document.body.appendChild(widgetContainer);
 
     const newChatBtn = chatContainer.querySelector('.new-chat-btn');
-   
-  
+    const chatInterface = chatContainer.querySelector('.chat-interface');
+    const messagesContainer = chatContainer.querySelector('.chat-messages');
     const textarea = chatContainer.querySelector('textarea');
     const sendButton = chatContainer.querySelector('button[type="submit"]');
 
@@ -421,9 +421,8 @@
             chatInterface.classList.add('active');
 
             const botMessageDiv = document.createElement('div');
-            botMessageDiv.className = 'chat-message bot';
-            botMessageDiv.textContent = Array.isArray(responseData) ? responseData[0].output : responseData.output;
-            messagesContainer.appendChild(botMessageDiv);
+        
+    
             messagesContainer.scrollTop = messagesContainer.scrollHeight;
         } catch (error) {
             console.error('Error:', error);
@@ -443,7 +442,9 @@
 
         const userMessageDiv = document.createElement('div');
         userMessageDiv.className = 'chat-message user';
-       
+        userMessageDiv.textContent = message;
+        messagesContainer.appendChild(userMessageDiv);
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
 
         try {
             const response = await fetch(config.webhook.url, {
@@ -454,17 +455,12 @@
                 body: JSON.stringify(messageData)
             });
             
-            const data = await response.json();
+           
             
-            const botMessageDiv = document.createElement('div');
-            botMessageDiv.className = 'chat-message bot';
-            botMessageDiv.textContent = Array.isArray(data) ? data[0].output : data.output;
+         
+         
           
-            messagesContainer.scrollTop = messagesContainer.scrollHeight;
-        } catch (error) {
-            console.error('Error:', error);
-        }
-    }
+    
 
     newChatBtn.addEventListener('click', startNewConversation);
     
@@ -476,7 +472,16 @@
         }
     });
     
- 
+    textarea.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            const message = textarea.value.trim();
+            if (message) {
+                sendMessage(message);
+                textarea.value = '';
+            }
+        }
+    });
     
     toggleButton.addEventListener('click', () => {
         chatContainer.classList.toggle('open');
